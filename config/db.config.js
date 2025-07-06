@@ -1,14 +1,14 @@
-// config/db.config.js
 const { Sequelize } = require("sequelize");
-require("dotenv").config();
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  process.env.DB_NAME || "railway",
+  process.env.DB_USER || "root",
+  process.env.DB_PASSWORD || "your_password_here",
   {
-    host: process.env.DB_HOST,
-    dialect: "mysql", // change to 'postgres' if using PostgreSQL
+    host: process.env.DB_HOST || "switchback.proxy.rlwy.net",
+    port: process.env.DB_PORT || 41550,
+    dialect: "mysql",
+    logging: false, // Optional: disable query logs
   }
 );
 
